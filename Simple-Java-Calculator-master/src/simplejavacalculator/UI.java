@@ -101,14 +101,14 @@ public class UI implements ActionListener {
       butMultiply = new JButton("*");
       butDivide = new JButton("/");
       butEqual = new JButton("=");
-      butSquareRoot = new JButton("sqrt");
-      butSquare = new JButton("x*x");
-      butOneDividedBy = new JButton("1/x");
+      butSquareRoot = new JButton("\u221A"); // square root
+      butSquare = new JButton("x\u00B2"); // square
+      butOneDividedBy = new JButton("\u215Fx"); // 1/x
       butCos = new JButton("Cos");
       butSin = new JButton("Sin");
       butTan = new JButton("Tan");
       butln = new JButton("ln");
-      butxpowerofy = new JButton("x^y");
+      butxpowerofy = new JButton("x\u207F");// x^n
       butlog = new JButton("log10(x)");
       butrate = new JButton("x%");
       butabs = new JButton("abs(x)");
