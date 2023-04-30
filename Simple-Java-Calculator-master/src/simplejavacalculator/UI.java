@@ -145,12 +145,13 @@ public class UI implements ActionListener {
             butEqual, butCancel, butSquareRoot, butSquare, butOneDividedBy,
             butCos, butSin, butTan, butxpowerofy, butlog, butrate, butabs, butBinary, butln };
 
+      // DIGITS 0-9 BUTTONS ONLY
       for (JButton eachBtnDigit : but) {
          eachBtnDigit.setFont(font);
          eachBtnDigit.setPreferredSize(new Dimension(80, 35));
          eachBtnDigit.setBackground(controlDigColor);
          eachBtnDigit.setBorder(BorderFactory.createLineBorder(controlDigColor));
-
+         eachBtnDigit.addActionListener(this);
          eachBtnDigit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                eachBtnDigit.setBackground(hoverBtnColor);
@@ -165,15 +166,17 @@ public class UI implements ActionListener {
             }
 
          });
-         eachBtnDigit.addActionListener(this);
       }
+      // ----------------------------------------------------------------
 
+      // ALL MATH FUNCTIONS
       for (JButton eachBtn : allButtons) {
          eachBtn.setPreferredSize(new Dimension(80, 40));
          eachBtn.setFont(font);
          // eachBtn.setBorder(new RoundedBorder(10));
          eachBtn.setBackground(controlBtnColor);
          eachBtn.setBorder(BorderFactory.createLineBorder(controlBtnColor));
+         eachBtn.addActionListener(this);
          eachBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                eachBtn.setBackground(hoverBtnColor);
@@ -188,7 +191,6 @@ public class UI implements ActionListener {
             }
 
          });
-         eachBtn.addActionListener(this);
       }
 
       panel.add(Box.createHorizontalStrut(100));
@@ -241,29 +243,6 @@ public class UI implements ActionListener {
       panelSub8.add(butabs);
       panelSub8.add(butBinary);
       panel.add(panelSub8);
-
-      for (int i = 0; i < 10; i++) {
-         but[i].addActionListener(this);
-      }
-      butAdd.addActionListener(this);
-      butMinus.addActionListener(this);
-      butMultiply.addActionListener(this);
-      butDivide.addActionListener(this);
-      butSquare.addActionListener(this);
-      butSquareRoot.addActionListener(this);
-      butOneDividedBy.addActionListener(this);
-      butCos.addActionListener(this);
-      butSin.addActionListener(this);
-      butTan.addActionListener(this);
-      butln.addActionListener(this);
-      butxpowerofy.addActionListener(this);
-      butlog.addActionListener(this);
-      butrate.addActionListener(this);
-      butabs.addActionListener(this);
-      butBinary.addActionListener(this);
-
-      butEqual.addActionListener(this);
-      butCancel.addActionListener(this);
 
       frame.add(panel);
       frame.setVisible(true);
