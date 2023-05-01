@@ -47,14 +47,12 @@ public class UI implements ActionListener {
    private final JPanel panel;
    private final JPanel panelTop;
    private final JPanel panelBottom;
-   private final JPanel panelSub1;
+   private final JPanel panelforText;
    private final JPanel quadII;
    private final JPanel panelCancelEQ;
    private final JPanel panelSpacer;
    private final JPanel panelArith;
    private final JPanel quadI;
-   private final JPanel panelSub7;
-   private final JPanel panelSub8;
 
    private final JTextArea text;
 
@@ -73,27 +71,26 @@ public class UI implements ActionListener {
    private BufferedImageCustom imageReturn;
 
    public UI() throws IOException {
-      frame = new JFrame("Calculator PH");
-
+      frame = new JFrame("Calculator - PS & RV");
       imageReturn = new BufferedImageCustom();
       image = new ImageIcon(imageReturn.imageReturn());
       Color backgroundColor = new Color(191, 215, 234);
+      // MAIN PANEL
       panel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
       panel.setBackground(backgroundColor);
       panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-      panelSub1 = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
-      // panelSub2 = new JPanel(new FlowLayout());
-      panelTop = new JPanel(new GridLayout(1, 2, 15, 5));
-      panelBottom = new JPanel(new GridLayout(5, 5, 10, 10));
-      quadII = new JPanel(new GridLayout(4, 3, 15, 5));
-      // panelSub3 = new JPanel(new FlowLayout());
-      panelCancelEQ = new JPanel(new GridLayout(4, 1, 15, 5));
-
-      panelSpacer = new JPanel(new FlowLayout());
+      // TEXT FIELD
+      panelforText = new JPanel(new FlowLayout(FlowLayout.CENTER));
+      // TOP HALF
+      panelTop = new JPanel(new GridLayout(1, 2, 15, 5));// contatins all panels in top half of panel
+      quadI = new JPanel(new GridLayout(1, 2, 5, 5)); // contatins all panels on the right side of TOP panel
       panelArith = new JPanel(new GridLayout(4, 1, 15, 5));
-      quadI = new JPanel(new GridLayout(1, 2, 5, 5));
-      panelSub7 = new JPanel(new FlowLayout());
-      panelSub8 = new JPanel(new FlowLayout());
+      panelCancelEQ = new JPanel(new GridLayout(4, 1, 15, 5));
+      quadII = new JPanel(new GridLayout(4, 3, 15, 5)); // contain all panels on the left side of the TOP panel
+      // SPACER
+      panelSpacer = new JPanel(new FlowLayout());
+      // BOTTOM HALF
+      panelBottom = new JPanel(new GridLayout(5, 5, 10, 10));
 
       font = new Font("Consolas", Font.PLAIN, 18);
 
@@ -200,6 +197,7 @@ public class UI implements ActionListener {
          eachBtn.setBorder(BorderFactory.createLineBorder(controlBtnColor));
          eachBtn.addActionListener(this);
          eachBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                eachBtn.setBackground(hoverBtnColor);
             }
@@ -214,12 +212,15 @@ public class UI implements ActionListener {
 
          });
       }
-
+      // ----------------------------------------------------------------
+      // BUTTON LAYOUT
       panel.add(Box.createHorizontalStrut(100));
-      panelSub1.add(text);
-      panel.add(panelSub1);
+      panelforText.add(text);
+      panel.add(panelforText);
 
-      for (JButton button : allButtonsArithmetic) {
+      for (
+
+      JButton button : allButtonsArithmetic) {
          panelArith.add(button);
       }
       for (JButton button : allButtonsTrigonometric) {
