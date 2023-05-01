@@ -52,7 +52,7 @@ public class Calculator {
         if (mode == BiOperatorModes.xpowerofy) {
             return pow(num1,num2);
         }
-                if (mode == BiOperatorModes.xrooty) {
+        if (mode == BiOperatorModes.xrooty) {
         	return pow(num2, 1/num1);
         }
         if (mode == BiOperatorModes.mod) { 
