@@ -103,6 +103,7 @@ public class UI implements ActionListener {
       for (int i = 0; i < 10; i++) {
          but[i] = new JButton(String.valueOf(i));
       }
+      // CREATE BUTTONS
       butAdd = new JButton("+");
       butMinus = new JButton("-");
       butMultiply = new JButton("*");
@@ -112,15 +113,15 @@ public class UI implements ActionListener {
       butSquare = new JButton("x\u00B2"); // square
       butOneDividedBy = new JButton("\u215Fx"); // 1/x
       butCos = new JButton("Cos");
-      butArcCos = new JButton("arcCos");
+      butArcCos = new JButton("\u222Bcos");
       butSin = new JButton("Sin");
-      butArcSin = new JButton("arcSin");
+      butArcSin = new JButton("\u222Bsin");
       butTan = new JButton("Tan");
-      butArcTan = new JButton("arcTan");
+      butArcTan = new JButton("\u222Btan");
       butln = new JButton("ln");
-      butepower = new JButton("epower");
+      butepower = new JButton("e\u207F");
       butxpowerofy = new JButton("x\u207F");// x^n
-      butTenPower = new JButton("10power");
+      butTenPower = new JButton("10\u207F");
       butlog = new JButton("log10(x)");
       butrate = new JButton("x%");
       butabs = new JButton("abs(x)");
@@ -223,15 +224,34 @@ public class UI implements ActionListener {
       }
       // ----------------------------------------------------------------
       // BUTTON LAYOUT
+
+      // TEXT PANEL
       panel.add(Box.createHorizontalStrut(100));
       panelforText.add(text);
-      panel.add(panelforText);
 
-      for (
+      // QUAD II
+      for (int i = 1; i < 10; i++) {
+         quadII.add(but[i]);
+      }
+      quadII.add(Box.createHorizontalStrut(80)); // to center the ZERO button vertically
+      quadII.add(but[0]);
 
-      JButton button : allButtonsArithmetic) {
+      // QUAD I
+      for (JButton button : allButtonsArithmetic) {
          panelArith.add(button);
       }
+      panelCancelEQ.add(Box.createHorizontalStrut(10));// to center
+      panelCancelEQ.add(butCancel);
+      panelCancelEQ.add(butEqual);
+      panelCancelEQ.add(Box.createHorizontalStrut(10));// to center
+      quadI.add(panelArith);
+      quadI.add(panelCancelEQ);
+
+      // TOP PANEL
+      panelTop.add(quadII);
+      panelTop.add(quadI);
+
+      // BOTTOM PANEL
       for (JButton button : allButtonsTrigonometric) {
          panelBottom.add(button);
       }
@@ -242,21 +262,8 @@ public class UI implements ActionListener {
          panelBottom.add(button);
       }
 
-      for (int i = 1; i < 10; i++) {
-         quadII.add(but[i]);
-      }
-      quadII.add(Box.createHorizontalStrut(80)); // to center the ZERO button vertically
-      quadII.add(but[0]);
-      panelCancelEQ.add(Box.createHorizontalStrut(10));
-      panelCancelEQ.add(butCancel);
-      // panelCancelEQ.add(Box.createHorizontalStrut(20));
-      panelCancelEQ.add(butEqual);
-      panelCancelEQ.add(Box.createHorizontalStrut(10));
-      quadI.add(panelArith);
-      quadI.add(panelCancelEQ);
-      panelTop.add(quadII);
-      panelTop.add(quadI);
-
+      // PANEL ORDERING
+      panel.add(panelforText);
       panel.add(panelTop);
       panelSpacer.add(Box.createHorizontalStrut(80));
       panel.add(panelSpacer);
