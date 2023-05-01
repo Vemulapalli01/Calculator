@@ -29,6 +29,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import java.awt.Font;
+import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -37,18 +38,21 @@ import javax.swing.BoxLayout;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import java.io.*;
+import java.util.concurrent.Flow;
 
 public class UI implements ActionListener {
 
    private final JFrame frame;
 
    private final JPanel panel;
+   private final JPanel panelTop;
+   private final JPanel panelBottom;
    private final JPanel panelSub1;
-   private final JPanel panelSub2;
-   private final JPanel panelSub3;
-   private final JPanel panelSub4;
-   private final JPanel panelSub5;
-   private final JPanel panelSub6;
+   private final JPanel quadII;
+   private final JPanel panelCancelEQ;
+   private final JPanel panelSpacer;
+   private final JPanel panelArith;
+   private final JPanel quadI;
    private final JPanel panelSub7;
    private final JPanel panelSub8;
 
@@ -74,15 +78,20 @@ public class UI implements ActionListener {
       imageReturn = new BufferedImageCustom();
       image = new ImageIcon(imageReturn.imageReturn());
       Color backgroundColor = new Color(191, 215, 234);
-      panel = new JPanel();
+      panel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
       panel.setBackground(backgroundColor);
       panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-      panelSub1 = new JPanel(new FlowLayout());
-      panelSub2 = new JPanel(new FlowLayout());
-      panelSub3 = new JPanel(new FlowLayout());
-      panelSub4 = new JPanel(new FlowLayout());
-      panelSub5 = new JPanel(new FlowLayout());
-      panelSub6 = new JPanel(new FlowLayout());
+      panelSub1 = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
+      // panelSub2 = new JPanel(new FlowLayout());
+      panelTop = new JPanel(new GridLayout(1, 2, 15, 5));
+      panelBottom = new JPanel(new GridLayout(5, 5, 10, 10));
+      quadII = new JPanel(new GridLayout(4, 3, 15, 5));
+      // panelSub3 = new JPanel(new FlowLayout());
+      panelCancelEQ = new JPanel(new GridLayout(4, 1, 15, 5));
+
+      panelSpacer = new JPanel(new FlowLayout());
+      panelArith = new JPanel(new GridLayout(4, 1, 15, 5));
+      quadI = new JPanel(new GridLayout(1, 2, 5, 5));
       panelSub7 = new JPanel(new FlowLayout());
       panelSub8 = new JPanel(new FlowLayout());
 
@@ -135,6 +144,7 @@ public class UI implements ActionListener {
       Color color4 = new Color(0, 48, 73); // navy blue
       Color color5 = new Color(102, 155, 188); // light blue
       Color color6 = new Color(135, 177, 202);
+      // Color function coordination
       Color controlDigColor = color6;
       Color controlBtnColor = color5;
       Color hoverBtnColor = color2;
@@ -144,11 +154,21 @@ public class UI implements ActionListener {
       final JButton[] allButtons = { butAdd, butMinus, butMultiply, butDivide,
             butEqual, butCancel, butSquareRoot, butSquare, butOneDividedBy,
             butCos, butSin, butTan, butxpowerofy, butlog, butrate, butabs, butBinary, butln };
+      // Arithmetic operations
+      final JButton[] allButtonsArithmetic = { butAdd, butMinus, butMultiply, butDivide };
+      // trigonometric operations
+      final JButton[] allButtonsTrigonometric = { butCos, butTan, butSin };
+      // square and log operations
+      final JButton[] allButtonsSqLog = { butln, butlog, butSquare, butSquareRoot, butxpowerofy };
+      // misc operations
+      final JButton[] allButtonsMisc = { butBinary, butrate, butabs, butOneDividedBy };
 
       // DIGITS 0-9 BUTTONS ONLY
       for (JButton eachBtnDigit : but) {
+         // panelSub2.add(eachBtnDigit);
          eachBtnDigit.setFont(font);
          eachBtnDigit.setPreferredSize(new Dimension(80, 35));
+         eachBtnDigit.setMaximumSize(new Dimension(80, 40));
          eachBtnDigit.setBackground(controlDigColor);
          eachBtnDigit.setBorder(BorderFactory.createLineBorder(controlDigColor));
          eachBtnDigit.addActionListener(this);
@@ -167,11 +187,13 @@ public class UI implements ActionListener {
 
          });
       }
+
       // ----------------------------------------------------------------
 
-      // ALL MATH FUNCTIONS
+      // ALL MATH FUNCTION BUTTONS
       for (JButton eachBtn : allButtons) {
          eachBtn.setPreferredSize(new Dimension(80, 40));
+         eachBtn.setMaximumSize(new Dimension(80, 40));
          eachBtn.setFont(font);
          // eachBtn.setBorder(new RoundedBorder(10));
          eachBtn.setBackground(controlBtnColor);
@@ -197,52 +219,38 @@ public class UI implements ActionListener {
       panelSub1.add(text);
       panel.add(panelSub1);
 
-      panelSub2.add(but[1]);
-      panelSub2.add(but[2]);
-      panelSub2.add(but[3]);
-      panelSub2.add(Box.createHorizontalStrut(15));
-      panelSub2.add(butAdd);
-      panelSub2.add(butMinus);
-      panel.add(panelSub2);
+      for (JButton button : allButtonsArithmetic) {
+         panelArith.add(button);
+      }
+      for (JButton button : allButtonsTrigonometric) {
+         panelBottom.add(button);
+      }
+      for (JButton button : allButtonsSqLog) {
+         panelBottom.add(button);
+      }
+      for (JButton button : allButtonsMisc) {
+         panelBottom.add(button);
+      }
 
-      panelSub3.add(but[4]);
-      panelSub3.add(but[5]);
-      panelSub3.add(but[6]);
-      panelSub3.add(Box.createHorizontalStrut(15));
-      panelSub3.add(butMultiply);
-      panelSub3.add(butDivide);
-      panel.add(panelSub3);
+      for (int i = 1; i < 10; i++) {
+         quadII.add(but[i]);
+      }
+      quadII.add(Box.createHorizontalStrut(80)); // to center the ZERO button vertically
+      quadII.add(but[0]);
+      panelCancelEQ.add(Box.createHorizontalStrut(10));
+      panelCancelEQ.add(butCancel);
+      // panelCancelEQ.add(Box.createHorizontalStrut(20));
+      panelCancelEQ.add(butEqual);
+      panelCancelEQ.add(Box.createHorizontalStrut(10));
+      quadI.add(panelArith);
+      quadI.add(panelCancelEQ);
+      panelTop.add(quadII);
+      panelTop.add(quadI);
 
-      panelSub4.add(but[7]);
-      panelSub4.add(but[8]);
-      panelSub4.add(but[9]);
-      panelSub4.add(Box.createHorizontalStrut(15));
-      panelSub4.add(butEqual);
-      panelSub4.add(butCancel);
-      panel.add(panelSub4);
-
-      panelSub5.add(Box.createHorizontalStrut(92));
-      panelSub5.add(but[0]);
-      panelSub5.add(butln);
-      panelSub5.add(Box.createHorizontalStrut(210));
-      panel.add(panelSub5);
-
-      panelSub6.add(butSquare);
-      panelSub6.add(butSquareRoot);
-      panelSub6.add(butOneDividedBy);
-      panelSub6.add(butxpowerofy);
-      panel.add(panelSub6);
-
-      panelSub7.add(butCos);
-      panelSub7.add(butSin);
-      panelSub7.add(butTan);
-      panel.add(panelSub7);
-
-      panelSub8.add(butlog);
-      panelSub8.add(butrate);
-      panelSub8.add(butabs);
-      panelSub8.add(butBinary);
-      panel.add(panelSub8);
+      panel.add(panelTop);
+      panelSpacer.add(Box.createHorizontalStrut(80));
+      panel.add(panelSpacer);
+      panel.add(panelBottom);
 
       frame.add(panel);
       frame.setVisible(true);
