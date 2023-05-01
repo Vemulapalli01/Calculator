@@ -58,7 +58,8 @@ public class UI implements ActionListener {
 
    private final JButton but[], butAdd, butMinus, butMultiply, butDivide,
          butEqual, butCancel, butSquareRoot, butSquare, butOneDividedBy,
-         butCos, butSin, butTan, butxpowerofy, butlog, butrate, butabs, butBinary, butln;
+         butCos, butSin, butTan, butxpowerofy, butlog, butrate, butabs, butBinary, butln, butArcSin, butArcCos,
+         butArcTan, butTenPower, butepower;
 
    private final Calculator calc;
 
@@ -111,10 +112,15 @@ public class UI implements ActionListener {
       butSquare = new JButton("x\u00B2"); // square
       butOneDividedBy = new JButton("\u215Fx"); // 1/x
       butCos = new JButton("Cos");
+      butArcCos = new JButton("arcCos");
       butSin = new JButton("Sin");
+      butArcSin = new JButton("arcSin");
       butTan = new JButton("Tan");
+      butArcTan = new JButton("arcTan");
       butln = new JButton("ln");
+      butepower = new JButton("epower");
       butxpowerofy = new JButton("x\u207F");// x^n
+      butTenPower = new JButton("10power");
       butlog = new JButton("log10(x)");
       butrate = new JButton("x%");
       butabs = new JButton("abs(x)");
@@ -150,13 +156,16 @@ public class UI implements ActionListener {
       // List of buttons
       final JButton[] allButtons = { butAdd, butMinus, butMultiply, butDivide,
             butEqual, butCancel, butSquareRoot, butSquare, butOneDividedBy,
-            butCos, butSin, butTan, butxpowerofy, butlog, butrate, butabs, butBinary, butln };
+            butCos, butSin, butTan, butxpowerofy, butlog, butrate, butabs, butBinary, butln, butArcCos, butArcSin,
+            butArcTan, butTenPower,
+            butepower };
       // Arithmetic operations
       final JButton[] allButtonsArithmetic = { butAdd, butMinus, butMultiply, butDivide };
       // trigonometric operations
-      final JButton[] allButtonsTrigonometric = { butCos, butTan, butSin };
+      final JButton[] allButtonsTrigonometric = { butCos, butTan, butSin, butArcCos, butArcSin, butArcTan };
       // square and log operations
-      final JButton[] allButtonsSqLog = { butln, butlog, butSquare, butSquareRoot, butxpowerofy };
+      final JButton[] allButtonsSqLog = { butln, butlog, butSquare, butSquareRoot, butxpowerofy, butTenPower,
+            butepower };
       // misc operations
       final JButton[] allButtonsMisc = { butBinary, butrate, butabs, butOneDividedBy };
 
@@ -313,17 +322,32 @@ public class UI implements ActionListener {
          if (source == butCos)
             writer(calc.calculateMono(Calculator.MonoOperatorModes.cos, reader()));
 
+         if (source == butArcCos)
+            writer(calc.calculateMono(Calculator.MonoOperatorModes.arccos, reader()));
+
          if (source == butSin)
             writer(calc.calculateMono(Calculator.MonoOperatorModes.sin, reader()));
+
+         if (source == butArcSin)
+            writer(calc.calculateMono(Calculator.MonoOperatorModes.arcsin, reader()));
 
          if (source == butTan)
             writer(calc.calculateMono(Calculator.MonoOperatorModes.tan, reader()));
 
+         if (source == butArcTan)
+            writer(calc.calculateMono(Calculator.MonoOperatorModes.arctan, reader()));
+
          if (source == butlog)
             writer(calc.calculateMono(Calculator.MonoOperatorModes.log, reader()));
 
+         if (source == butTenPower)
+            writer(calc.calculateMono(Calculator.MonoOperatorModes.tenpower, reader()));
+
          if (source == butln)
             writer(calc.calculateMono(Calculator.MonoOperatorModes.ln, reader()));
+
+         if (source == butepower)
+            writer(calc.calculateMono(Calculator.MonoOperatorModes.epower, reader()));
 
          if (source == butrate)
             writer(calc.calculateMono(Calculator.MonoOperatorModes.rate, reader()));
