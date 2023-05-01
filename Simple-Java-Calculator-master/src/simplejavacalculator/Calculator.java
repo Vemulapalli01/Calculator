@@ -19,11 +19,11 @@ import static java.lang.Math.pow;
 public class Calculator {
 
     public enum BiOperatorModes {
-        normal, add, minus, multiply, divide , xpowerofy 
+        normal, add, minus, multiply, divide , xpowerofy, xrooty, mod 
     }
 
     public enum MonoOperatorModes {
-        square, squareRoot, oneDividedBy, cos, sin, tan, log, rate, abs, ln,
+        square, squareRoot, oneDividedBy, cos, sin, tan, log, rate, abs, ln, arcsin, arccos, arctan, tenpower, epower
     }
 
     private Double num1, num2;
@@ -52,7 +52,13 @@ public class Calculator {
         if (mode == BiOperatorModes.xpowerofy) {
             return pow(num1,num2);
         }
-
+                if (mode == BiOperatorModes.xrooty) {
+        	return pow(num2, 1/num1);
+        }
+        if (mode == BiOperatorModes.mod) { 
+        	return num1%num2;
+        }
+        
         // never reach
         throw new Error();
     }
@@ -121,6 +127,21 @@ public class Calculator {
         }
         if (newMode == MonoOperatorModes.abs){
             return Math.abs(num);
+        }
+        if (newMode == MonoOperatorModes.arcsin) {
+        	return Math.asin(Math.toRadians(num));
+        }
+        if (newMode == MonoOperatorModes.arccos) {
+        	return Math.acos(Math.toRadians(num));
+        }
+        if (newMode == MonoOperatorModes.arctan) {
+        	return Math.atan(Math.toRadians(num));
+        }
+        if (newMode == MonoOperatorModes.tenpower) {
+        	return pow(10, num);
+        }
+        if (newMode == MonoOperatorModes.epower) {
+        	return Math.exp(num);
         }
 
         // never reach
