@@ -129,13 +129,13 @@ public class Calculator {
             return Math.abs(num);
         }
         if (newMode == MonoOperatorModes.arcsin) {
-        	return Math.toDegrees(Math.asin(Math.toRadians(num)));
+        	return Math.asin(num);
         }
         if (newMode == MonoOperatorModes.arccos) {
-        	return Math.toDegrees(Math.acos(Math.toRadians(num)));
+        	return Math.acos(num);
         }
         if (newMode == MonoOperatorModes.arctan) {
-        	return Math.toDegrees(Math.atan(Math.toRadians(num)));
+        	return Math.atan(num);
         }
         if (newMode == MonoOperatorModes.tenpower) {
         	return pow(10, num);
