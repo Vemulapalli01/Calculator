@@ -93,7 +93,8 @@ public class UI implements ActionListener {
       // BOTTOM HALF
       panelBottom = new JPanel(new GridLayout(5, 5, 10, 10));
 
-      font = new Font("Consolas", Font.PLAIN, 18);
+      // font = new Font("Consolas", Font.PLAIN, 18);
+      font = new Font("Roboto", Font.PLAIN, 20); // FONT
 
       text = new JTextArea(1, 30);
 
