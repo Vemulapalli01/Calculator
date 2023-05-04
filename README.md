@@ -20,6 +20,13 @@ We faced challenges in implementing the parentheses function and improving the G
 
 We conducted manual testing procedures by performing a series of button presses and inputting various mathematical expressions to verify the accuracy of our calculations. We would like to have outsourced user testing done in the future to gain feedback on how real-world users will use the software.
 
+**Presentation:**
+
+[COMP 312 Open-Source Project.pptx](https://github.com/Vemulapalli01/Calculator/files/11400247/COMP.312.Open-Source.Project.pptx)
+
+[COMP 312 Open-Source Project.pdf](https://github.com/Vemulapalli01/Calculator/files/11400250/COMP.312.Open-Source.Project.pdf)
+
+
 **Final Calculator:**
 
 ![Screenshot 2023-04-30 211343](https://user-images.githubusercontent.com/91167662/236024173-7231f06b-8be5-44b3-b2a4-4dcd20e9e8d0.png)
