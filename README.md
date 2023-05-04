@@ -26,6 +26,12 @@ We conducted manual testing procedures by performing a series of button presses 
 
 [COMP 312 Open-Source Project.pdf](https://github.com/Vemulapalli01/Calculator/files/11400250/COMP.312.Open-Source.Project.pdf)
 
+**Responsibilities**
+
+Penelope was responsible for the aesthetics of the calculator, which included improving the user interface (UI) and its visual appeal. She replaced button text with math symbols to make it easier for users to understand the functions and added hover and button pressed visual aids for a better user experience.
+
+Rishi was responsible for improving the functionality of the calculator by fixing bugs and adding new functions. He added advanced mathematical functions such as arcCos, arcSin, arcTan, e^x, 10^x, root, and mod to the calculator's repertoire.
+
 
 **Final Calculator:**
 
